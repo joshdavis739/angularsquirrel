@@ -1,12 +1,16 @@
-.content {
-    background-image:     linear-gradient(
+.foo { 
+    background-image: linear-gradient(
         rgba(0, 0, 0, 0.6),
         rgba(0, 0, 0, 0.6)
       ), url('../assets/images/forest.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: calc(100vh);
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: calc(100vh);
+}
+
+.content {
     padding: 32px;
+    height: calc(100vh - 2 * 64px)
 }
 
 app-header {
