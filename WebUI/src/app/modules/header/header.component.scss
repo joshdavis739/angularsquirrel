@@ -1,0 +1,26 @@
+$primary-orange: #FF9800;
+$primary-grey: #473E3E;
+
+nav {
+    background-color:black;
+    width: calc(100% - 2 * 32px);
+    height: 64px;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.links {
+    height: 64px;
+    line-height: 64px;
+    float: right;
+
+    a {
+        text-transform: uppercase;
+        color: white;
+        text-decoration: none;
+    }
+
+    a + a {
+        padding-left: 32px;
+    }
+}

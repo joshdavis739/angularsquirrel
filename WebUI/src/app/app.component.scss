@@ -1,0 +1,14 @@
+.content {
+    background-image:     linear-gradient(
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
+      ), url('../assets/images/forest.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh);
+    padding: 32px;
+}
+
+app-header {
+    z-index:1;
+}
