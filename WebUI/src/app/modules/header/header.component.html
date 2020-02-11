@@ -1,7 +1,10 @@
 <nav>
+  <div class="home">
+    <a [routerLink]="'/'" [routerLinkActive]="'active'"[routerLinkActiveOptions]="{exact: true}"><span></span>Home</a>
+  </div>
   <div class="links">
-    <a [routerLink]="">Blog</a>
-    <a [routerLink]="">About me</a>
-    <a [routerLink]="">Contact</a>
+    <a [routerLink]="'blog'" [routerLinkActive]="'active'">Blog</a>
+    <a [routerLink]="'about-me'" [routerLinkActive]="'active'">About me</a>
+    <a [routerLink]="'contact'" [routerLinkActive]="'active'">Contact</a>
   </div>
 </nav>

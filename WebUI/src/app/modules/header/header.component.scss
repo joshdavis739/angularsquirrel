@@ -13,18 +13,48 @@ nav {
         opacity: 100%;
     }
 
-    .links {
+    div {
         height: $header-height;
         line-height: $header-height;
-        float: right;
-    
+
+        &.home {
+            float:left;
+
+            a {
+                > span {
+                    background-image: url('../../../assets/images/squirrel-48.png');
+                    background-size: 24px;
+                    background-repeat: no-repeat;
+                    padding-left: 32px; 
+                    filter: sepia(100%);
+                    transition: $transition-time;
+                }
+
+                &.active {
+                    > span {
+                        filter: sepia(0%);
+                    }
+                }
+
+            }
+        }
+
+        &.links {
+            float: right;
+        }
+
         a {
             text-transform: uppercase;
             color: $white;
             text-decoration: none;
-
+            transition: $transition-time;
+    
             & + a {
                 padding-left: 32px;
+            }
+    
+            &.active {
+                color: $orange-primary;
             }
         }
     }
