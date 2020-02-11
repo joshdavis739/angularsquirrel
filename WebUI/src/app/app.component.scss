@@ -1,18 +1,20 @@
-.foo { 
+@import '../styles.scss';
+
+.body { 
     background-image: linear-gradient(
         rgba(0, 0, 0, 0.6),
         rgba(0, 0, 0, 0.6)
-      ), url('../assets/images/forest.jpg');
+      ), url('~/assets/images/forest.jpg');
       background-repeat: no-repeat;
       background-size: cover;
-      height: calc(100vh);
+      height: calc(100%);
 }
 
 .content {
-    padding: 32px;
-    height: calc(100vh - 2 * 64px)
+    padding: $page-padding;
+    height: calc(100vh - #{$header-height} - 2 * #{$page-padding});
 }
 
 app-header {
-    z-index:1;
+    z-index: 1;
 }

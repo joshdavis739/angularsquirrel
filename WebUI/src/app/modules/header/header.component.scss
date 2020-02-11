@@ -1,33 +1,31 @@
-$primary-orange: #FF9800;
-$primary-grey: #473E3E;
+@import '../../../styles.scss';
 
 nav {
-    background-color:black;
-    width: calc(100% - 2 * 32px);
-    height: 64px;
-    padding-left: 32px;
-    padding-right: 32px;
+    background-color: $black;
+    width: calc(100% - 2 * $page-padding);
+    height: $header-height;
+    padding-left: $page-padding;
+    padding-right: $page-padding;
     opacity: 50%;
-
-    transition: 0.3s;
+    transition: $transition-time;
 
     &:hover {
         opacity: 100%;
     }
-}
 
-.links {
-    height: 64px;
-    line-height: 64px;
-    float: right;
+    .links {
+        height: $header-height;
+        line-height: $header-height;
+        float: right;
+    
+        a {
+            text-transform: uppercase;
+            color: $white;
+            text-decoration: none;
 
-    a {
-        text-transform: uppercase;
-        color: white;
-        text-decoration: none;
-    }
-
-    a + a {
-        padding-left: 32px;
+            & + a {
+                padding-left: 32px;
+            }
+        }
     }
 }
