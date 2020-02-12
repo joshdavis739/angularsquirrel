@@ -8,6 +8,7 @@ import { HomeComponent } from './modules/home/home.component';
 import { AboutMeModule } from './modules/about-me/about-me.module';
 import { ContactModule } from './modules/contact/contact.module';
 import { BlogModule } from './modules/blog/blog.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BlogModule } from './modules/blog/blog.module';
     AppRoutingModule,
     AboutMeModule,
     ContactModule,
-    BlogModule
+    BlogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
