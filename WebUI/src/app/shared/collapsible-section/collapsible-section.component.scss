@@ -31,4 +31,5 @@ $title-bar-height: calc(#{$header-height});
     background-color: $black;
     padding: 24px;
     opacity: 50%;
+    overflow: hidden;
 }
