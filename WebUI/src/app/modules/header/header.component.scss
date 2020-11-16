@@ -6,7 +6,7 @@ nav {
     height: $header-height;
     padding-left: $page-padding;
     padding-right: $page-padding;
-    opacity: 50%;
+    opacity: 75%;
     transition: $transition-time;
 
     &:hover {
@@ -25,7 +25,7 @@ nav {
                     background-image: url('../../../assets/images/squirrel-48.png');
                     background-size: 24px;
                     background-repeat: no-repeat;
-                    padding-left: 32px; 
+                    padding-left: 32px;
                     filter: sepia(100%);
                     transition: $transition-time;
                 }
@@ -48,11 +48,11 @@ nav {
             color: $white;
             text-decoration: none;
             transition: $transition-time;
-    
+
             & + a {
                 padding-left: 32px;
             }
-    
+
             &.active {
                 color: $orange-primary;
             }

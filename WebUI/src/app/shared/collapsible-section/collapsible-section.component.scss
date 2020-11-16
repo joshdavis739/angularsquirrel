@@ -2,34 +2,62 @@
 @import '../../../assets/styles/variables';
 
 $title-bar-height: calc(#{$header-height});
+$border-radius: 8px;
 
 .title-bar {
     width: calc(100% - 24px);
     background-color: $black;
-    height: $title-bar-height;
-    opacity: 50%;
-    transition: $transition-time;
+    height: $title-bar-height;    opacity: 75%;
+
     text-transform: uppercase;
     color: $white;
-    border-radius: 8px;
+    border-radius: $border-radius;
     padding-left: 24px;
+    padding-right: 24px;
     line-height: $title-bar-height;
+
+    > h2 {
+      width: calc(100% - 128px);
+      display: inline-block;
+      line-height: $title-bar-height;
+      height: $title-bar-height;
+      margin: 0;
+    }
 
     &:hover {
         opacity: 100%;
+        cursor: pointer;
     }
 
     &.open {
         color: $orange-primary;
         opacity: 100%;
+        transition: 0;
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
     }
+
+    &:not(.open) {
+      transition: $transition-time;
+      // transition-delay: 0.9s;
+    }
+}
+
+.arrow {
+  background-image: url('../../../assets/images/acorn.svg');
+  height: calc(31px);
+  width: calc(31px);
+  background-repeat: no-repeat;
+  display: inline-block;
+  margin-top: 8px;
+  line-height: $title-bar-height;
 }
 
 .content {
     background-color: $black;
     padding: 24px;
-    opacity: 50%;
+    opacity: 75%;
     overflow: hidden;
+    border-bottom-right-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
 }
