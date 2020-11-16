@@ -23,7 +23,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         // backgroundColor: 'green'
       })),
       transition('open => closed', [
-        animate('1s ease-in-out')
+        animate('0.5s ease-in-out')
       ]),
       transition('closed => open', [
         animate('0.5s ease-in-out')

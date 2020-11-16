@@ -2,13 +2,12 @@
 @import '../../../assets/styles/variables';
 
 $title-bar-height: calc(#{$header-height});
-$border-radius: 8px;
 
 .title-bar {
-    width: calc(100% - 24px);
+    width: calc(100% - 48px);
     background-color: $black;
-    height: $title-bar-height;    opacity: 75%;
-
+    height: $title-bar-height;
+    opacity: 75%;
     text-transform: uppercase;
     color: $white;
     border-radius: $border-radius;
@@ -16,12 +15,41 @@ $border-radius: 8px;
     padding-right: 24px;
     line-height: $title-bar-height;
 
-    > h2 {
-      width: calc(100% - 128px);
+    > div {
       display: inline-block;
-      line-height: $title-bar-height;
-      height: $title-bar-height;
-      margin: 0;
+      vertical-align: top;
+
+      &.title-bar__title {
+        width: 80%;
+        line-height: $title-bar-height;
+        height: $title-bar-height;
+
+        h2 {
+          display: inline-block;
+          margin: 0;
+        }
+      }
+
+      &.title-bar__arrow {
+        width: 20%;
+        height: $title-bar-height;
+
+        > .title-bar__arrow__icon {
+          background-image: url('../../../assets/images/acorn.svg');
+          transform: rotate(-180deg);
+          background-repeat: no-repeat;
+          line-height: $title-bar-height;
+          height:$title-bar-height;
+          width:$title-bar-height;
+          background-size: 32px;
+          background-position-x: 16px;
+          background-position-y: 16px;
+          display:inherit;
+          float:right;
+          filter: sepia(100%);
+          transition: 0.5s;
+        }
+      }
     }
 
     &:hover {
@@ -35,22 +63,19 @@ $border-radius: 8px;
         transition: 0;
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
+        // transition-delay: 0.5s;
+        // transition: 0.5s;
+
+        .title-bar__arrow__icon {
+          filter: sepia(0%) !important;
+          transform: rotate(0) !important;
+        }
     }
 
     &:not(.open) {
-      transition: $transition-time;
-      // transition-delay: 0.9s;
+      // transition: 0;
+      // transition-delay: 0.5s;
     }
-}
-
-.arrow {
-  background-image: url('../../../assets/images/acorn.svg');
-  height: calc(31px);
-  width: calc(31px);
-  background-repeat: no-repeat;
-  display: inline-block;
-  margin-top: 8px;
-  line-height: $title-bar-height;
 }
 
 .content {

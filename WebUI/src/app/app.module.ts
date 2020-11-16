@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './modules/header/header.component';
 import { HomeComponent } from './modules/home/home.component';
 import { AboutMeModule } from './modules/about-me/about-me.module';
-import { ContactModule } from './modules/contact/contact.module';
 import { BlogModule } from './modules/blog/blog.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DesignModule } from './modules/design/design.module';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     AboutMeModule,
-    ContactModule,
     BlogModule,
+    DesignModule,
     BrowserAnimationsModule
   ],
   providers: [],
