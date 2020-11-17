@@ -2,9 +2,22 @@
   <div class="home">
     <a [routerLink]="'/'" [routerLinkActive]="'active'"[routerLinkActiveOptions]="{exact: true}"><span></span>Home</a>
   </div>
-  <div class="links">
-    <a [routerLink]="'blog'" [routerLinkActive]="'active'">Blog</a>
-    <a [routerLink]="'design'" [routerLinkActive]="'active'">Design principles</a>
-    <a [routerLink]="'about-me'" [routerLinkActive]="'active'">About me</a>
+  <div class="links" >
+    <div class="burger" *ngIf="isMobile" (click)="toggle()">
+      <hr class="burger__line">
+      <hr class="burger__line">
+      <hr class="burger__line">
+    </div>
+    <ul [ngClass]="{'open': isOpen, 'isMobile': isMobile}">
+      <li>
+        <a [routerLink]="'blog'" [routerLinkActive]="'active'">Blog</a>
+      </li>
+      <li>
+        <a [routerLink]="'design'" [routerLinkActive]="'active'">Design principles</a>
+      </li>
+      <li>
+        <a [routerLink]="'about-me'" [routerLinkActive]="'active'">About me</a>
+      </li>
+    </ul>
   </div>
 </nav>

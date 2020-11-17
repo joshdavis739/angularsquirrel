@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -12,4 +12,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  isOpen = false;
+  isMobile = window.innerWidth <= 600;
+
+  toggle() {
+    this.isOpen = !this.isOpen;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.isMobile = event.target.innerWidth <= 600
+  }
 }
