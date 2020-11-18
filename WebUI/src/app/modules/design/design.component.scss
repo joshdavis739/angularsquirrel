@@ -1,8 +1,6 @@
 @import '../../../assets/styles/colours';
 @import '../../../assets/styles/variables';
 
-$card-height: 400px;
-
 .cards {
   display:grid;
   grid-template-columns: 25% 25% 25% 25%;
@@ -10,54 +8,5 @@ $card-height: 400px;
 
   &.isMobile {
     grid-template-columns: 100%;
-  }
-}
-
-.card-2 {
-  display: inline-block;
-  margin-top: 1rem;
-  height: $card-height;
-  // width: 25%;
-  background-color: $black;
-  border-radius: $border-radius;
-  transition: $transition-time;
-  overflow: auto;
-  position: relative;
-  opacity: 75%;
-
-
-  .card__image {
-    height:calc((3 * #{$card-height}) / 5);
-    // border: 1px solid white;
-    // margin: 16px;
-    border-radius: $border-radius;
-    background: url(../../../assets/images/squirrel.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .card__description {
-    margin: 16px;
-
-    .card__description__date {
-      font-size: 14px;
-    }
-
-    .card__description__title {
-      margin-top: 8px;
-      margin-bottom: 8px;
-    }
-
-    .card__description__subtitle {
-      font-size: 16px;
-    }
-  }
-
-  &:hover {
-    opacity: 100%;
-    cursor: pointer;
-    box-shadow: 0px 0px 1rem black;
   }
 }

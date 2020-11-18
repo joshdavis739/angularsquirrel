@@ -9,6 +9,7 @@ import { AboutMeModule } from './modules/about-me/about-me.module';
 import { BlogModule } from './modules/blog/blog.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DesignModule } from './modules/design/design.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DesignModule } from './modules/design/design.module';
     AboutMeModule,
     BlogModule,
     DesignModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

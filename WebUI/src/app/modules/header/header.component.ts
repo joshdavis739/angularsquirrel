@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('document:click', ['$event'])
   private onClick(event) {
-    if (!this.links.nativeElement.contains(event.target) && !this.burger.nativeElement.contains(event.target)) {
+    if (!this.links.nativeElement.contains(event.target) && !(this.burger && this.burger.nativeElement.contains(event.target))) {
       this.isOpen = false;
     }
   }

@@ -91,7 +91,7 @@ nav {
             width: 32px;
             border: 1px solid white;
             border-radius: $border-radius;
-            // background-color:$orange-primary;
+            background-color: $black;
             cursor: pointer;
 
             .burger__line {
@@ -104,7 +104,7 @@ nav {
               color:white;
 
               &:first-child {
-                margin-top: 9px;
+                margin-top: 4px;
               }
               // border-top: 1px dashed red;
             }

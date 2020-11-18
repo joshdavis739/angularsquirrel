@@ -1,33 +1,20 @@
-<div class="cards"  [ngClass]="{'isMobile': isMobile}">
-  <div class="card-2">
-    <div class="card__image"></div>
-    <div class="card__description">
-      <span class="card__description__date">11th November 2020</span>
-      <h2 class="card__description__title">Button transitions</h2>
-      <span class="card__description__subtitle">Why (most) button transitions suck</span>
-    </div>
-  </div>
-
-  <div class="card-2">
-    <div class="card__image"></div>
-    <div class="card__description">
-      <span class="card__description__date">11th November 2020</span>
-      <h2 class="card__description__title">Loading states</h2>
-      <span class="card__description__subtitle">Avoid the eternal spinner</span>
-    </div>
-  </div>
-
-  <div class="card-2">
-    <div class="card__image"></div>
-    <div class="card__description">
-      <span class="card__description__date">11th November 2020</span>
-      <h2 class="card__description__title">Hover states</h2>
-      <span class="card__description__subtitle">Mobile users don't have a cursor</span>
-    </div>
-  </div>
+<div class="cards" [ngClass]="{'isMobile': isMobile}">
+  <app-card
+    [title]="'Loading states'"
+    [subtitle]="'Avoid the eternal spinner'"
+    [date]="'11th November 2020'"
+    [url]="'loading-states'"
+  ></app-card>
+  <app-card
+    [title]="'Button transitions'"
+    [subtitle]="'Why (most) button transitions suck'"
+    [date]="'11th November 2020'"
+    [url]="'button-transitions'"
+  ></app-card>
+  <app-card
+    [title]="'Hover states'"
+    [subtitle]="'Mobile users don\'t have a cursor'"
+    [date]="'11th November 2020'"
+    [url]="'hover-states'"
+  ></app-card>
 </div>
-
-
-<!-- <div class="card">
-  <h2>Loading states</h2>
-</div> -->
