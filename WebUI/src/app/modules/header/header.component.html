@@ -3,12 +3,12 @@
     <a [routerLink]="'/'" [routerLinkActive]="'active'"[routerLinkActiveOptions]="{exact: true}"><span></span>Home</a>
   </div>
   <div class="links" >
-    <div class="burger" *ngIf="isMobile" (click)="toggle()">
+    <div class="burger" *ngIf="isMobile" (click)="toggle()" #burger>
       <hr class="burger__line">
       <hr class="burger__line">
       <hr class="burger__line">
     </div>
-    <ul [ngClass]="{'open': isOpen, 'isMobile': isMobile}">
+    <ul [ngClass]="{'open': isOpen, 'isMobile': isMobile}" #links>
       <li>
         <a [routerLink]="'blog'" [routerLinkActive]="'active'">Blog</a>
       </li>

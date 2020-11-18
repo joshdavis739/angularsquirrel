@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -22,5 +22,18 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.isMobile = event.target.innerWidth <= 600
+  }
+
+  @ViewChild('links')
+  private links: ElementRef;
+
+  @ViewChild('burger')
+  private burger: ElementRef;
+
+  @HostListener('document:click', ['$event'])
+  private onClick(event) {
+    if (!this.links.nativeElement.contains(event.target) && !this.burger.nativeElement.contains(event.target)) {
+      this.isOpen = false;
+    }
   }
 }
