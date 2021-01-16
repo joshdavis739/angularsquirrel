@@ -19,6 +19,8 @@ export class CardComponent implements OnInit {
   @Input()
   public date: Date;
   @Input()
+  public text: string;
+  @Input()
   public url: string;
 
   isMobile = window.innerWidth <= 600

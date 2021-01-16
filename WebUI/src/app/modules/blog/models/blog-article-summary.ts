@@ -3,4 +3,5 @@ export interface BlogArticleSummary {
   title: string;
   subtitle: string;
   datePosted: Date;
+  text: string;
 }

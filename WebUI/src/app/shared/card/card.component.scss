@@ -1,21 +1,19 @@
 @import '../../../assets/styles/colours.scss';
 @import '../../../assets/styles/variables';
 
-$card-height: 400px;
+$card-height: 320px;
 
 .card {
   display: inline-block;
-  margin-top: 1rem;
   height: $card-height;
-  background-color: $black;
   border-radius: $border-radius;
   transition: $transition-time;
   overflow: auto;
   position: relative;
-  opacity: 75%;
   width: 100%;
   text-decoration: none;
   color: $white;
+  padding: 2rem;
 
   .card__image {
     height:calc((3 * #{$card-height}) / 5);
@@ -27,27 +25,47 @@ $card-height: 400px;
     border-bottom-right-radius: 0;
   }
 
-  .card__description {
-    margin: 16px;
+  .card__date {
+    font-size: 14px;
+    color: $grey-primary;
+  }
 
-    .card__description__date {
-      font-size: 14px;
-    }
+  .card__title {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
 
-    .card__description__title {
-      margin-top: 8px;
-      margin-bottom: 8px;
-    }
+  .card__subtitle {
+    font-size: 16px;
+  }
 
-    .card__description__subtitle {
-      font-size: 16px;
+  .card__text {
+    color: $grey-primary;
+    display: inline;
+  }
+
+  .card__read-more {
+    opacity: 0;
+    font-style: italic;
+    color: $orange-primary;
+    float:right;
+
+    &:hover {
+      transition-duration: $transition-time;
+      text-decoration: underline;
     }
   }
 
+
   &:hover,
   &:focus  {
-    opacity: 100%;
     cursor: pointer;
     box-shadow: 0px 0px 1rem black;
+    background-color: black;
+
+    .card__read-more {
+      transition-duration: $transition-time;
+      opacity: 100%;
+    }
   }
 }

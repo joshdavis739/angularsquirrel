@@ -5,24 +5,18 @@ export const blogArticles: BlogArticle[] = [
   {
     summary: {
       identifier: 'test-identifier',
-      title: 'test title',
-      subtitle: 'this is a test subtitle',
+      title: 'The Great Lie of Web Development',
+      subtitle: 'And how best to get the most clicks on your site',
       datePosted: new Date(Date.now())
     } as BlogArticleSummary,
     text:
-    `Dasher donner comet cupid blitzen some other reindeer
+    `
+    This is not an ordinary blog article. In fact, I would hesistate to even call it a blog article. This revolutionary bit of advice will change the way you
+    creat websites. But first, we have to take a short history lesson. As Warren Buffet once said,
 
-    \`\`\`csharp
-    public string Foo() {
-      Console.WriteLine("Hello");
-    }
-    \`\`\`
+    > The more you learn, the more you learn.
 
-    This is a list:
-
-    - celery
-    - cabbages
-    - water
+    That's why I'm here in my garage. Just bought this new Lamborghini here. But you know what I value more than that? Knowledge.
     `
   } as BlogArticle,
   {

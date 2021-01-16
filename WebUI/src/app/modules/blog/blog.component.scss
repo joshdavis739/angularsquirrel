@@ -2,9 +2,9 @@
 @import '../../../assets/styles/variables';
 
 .cards {
-  display:grid;
-  grid-template-columns: 25% 25% 25% 25%;
   gap: 16px 16px;
+  width: 80ch;
+  margin: auto;
 
   &.isMobile {
     grid-template-columns: 100%;
