@@ -10,7 +10,6 @@ $card-height: 320px;
   transition: $transition-time;
   overflow: auto;
   position: relative;
-  width: 100%;
   text-decoration: none;
   color: $white;
   padding: 2rem;
@@ -42,6 +41,21 @@ $card-height: 320px;
   .card__text {
     color: $grey-primary;
     display: inline;
+    overflow: hidden;
+    max-height: 150px;
+    height: 180px;
+    display: block;
+
+    &:after {
+      content  : "";
+      position : absolute;
+      z-index  : 1;
+      bottom   : 64px;
+      left     : 32px;
+      pointer-events   : none;
+      width    : calc(100% - 64px);
+      height   : 4em;
+    }
   }
 
   .card__read-more {
@@ -66,6 +80,14 @@ $card-height: 320px;
     .card__read-more {
       transition-duration: $transition-time;
       opacity: 100%;
+    }
+
+    .card__text {
+      &:after {
+        // background-image: linear-gradient(to bottom, transparent, black);
+        // transition-duration: $transition-time;
+        transition: background $transition-time linear;
+      }
     }
   }
 }
