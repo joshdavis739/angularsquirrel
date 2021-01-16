@@ -1,0 +1,16 @@
+<markdown ngPreserveWhitespaces>
+  <h1>
+    {{ blogArticle.summary.title }}
+  </h1>
+  <h2>
+    {{ blogArticle.summary.subtitle }}
+  </h2>
+  <h3>
+    Posted on {{ blogArticle.summary.datePosted | date }}
+  </h3>
+  <hr>
+</markdown>
+
+<markdown>
+  {{ blogArticle.text }}
+</markdown>

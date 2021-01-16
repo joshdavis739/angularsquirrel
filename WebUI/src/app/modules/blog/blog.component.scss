@@ -1,0 +1,12 @@
+@import '../../../assets/styles/colours';
+@import '../../../assets/styles/variables';
+
+.cards {
+  display:grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  gap: 16px 16px;
+
+  &.isMobile {
+    grid-template-columns: 100%;
+  }
+}

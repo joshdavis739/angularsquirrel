@@ -1,3 +1,11 @@
 <p>
   Blog coming soon!
 </p>
+<div class="cards" [ngClass]="{'isMobile': isMobile}">
+  <app-card *ngFor="let summary of blogArticleSummaries"
+  [title]="summary.title"
+  [subtitle]="summary.subtitle"
+  [date]="summary.datePosted | date"
+  [url]="summary.identifier"
+  ></app-card>
+</div>

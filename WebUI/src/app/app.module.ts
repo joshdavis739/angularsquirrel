@@ -8,8 +8,8 @@ import { HomeComponent } from './modules/home/home.component';
 import { AboutMeModule } from './modules/about-me/about-me.module';
 import { BlogModule } from './modules/blog/blog.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DesignModule } from './modules/design/design.module';
 import { RouterModule } from '@angular/router';
+import { MarkdownModule, MarkdownService, MarkedOptions } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -22,11 +22,19 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     AboutMeModule,
     BlogModule,
-    DesignModule,
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
+    // MarkdownModule.forRoot()
+    MarkdownModule.forRoot({
+      markedOptions: {
+        provide: MarkedOptions,
+        useValue: {
+          gfm: true
+        }
+      }
+    })
   ],
-  providers: [],
+  providers: [MarkdownService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
