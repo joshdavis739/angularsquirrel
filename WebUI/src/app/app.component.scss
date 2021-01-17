@@ -11,8 +11,10 @@
 }
 
 .content {
-  margin-top: 64px;
   padding: $page-padding;
   min-height: calc(100vh - #{$header-height} - 2 * #{$page-padding});
   background-attachment: fixed;
+  width: 80ch;
+  margin: auto;
+  margin-top: 64px;
 }

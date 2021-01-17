@@ -4,5 +4,24 @@
   background-repeat: no-repeat;
   height: 32px;
   width: 32px;
-  display: inherit;
+  display: inline-block;
+}
+
+.contact-me__link {
+  height: 32px;
+  display: block;
+}
+
+.contact-me__text {
+  line-height:  32px;
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 8px;
+}
+
+.contact-me__icon {
+  display: inline-block;
+  vertical-align: top;
+  height: 32px;
+  width: 32px;
 }
