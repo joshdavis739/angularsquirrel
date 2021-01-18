@@ -1,40 +1,57 @@
-
-<app-collapsible-section
-[title]="'Tech stack'"
->
-  <div>
-    Frontend
-    <ul>
-      <li>Angular</li>
-      <li>CSS & SCSS</li>
-      <li>HTML</li>
-      <li>Knockout</li>
-      <li>Web Forms</li>
-    </ul>
+<div>
+  <h1>About me</h1>
+  <p>
+    I'm currently working as a full stack developer in Warwickshire with the .NET tech stack. Outside of work, I play French Horn, Tenor Horn and a bit too much FTL.
+  </p>
+  <p>You can follow my various exploits at:</p>
+  <a href="https://github.com/joshdavis739" class="contact-me__link">
+    <i class="contact-me__icon github"></i>
+    <span class="contact-me__text">Github</span>
+  </a>
+</div>
+<hr>
+<div>
+  <h2>About AngularSquirrel</h2>
+  <p>AngularSquirrel, as the name suggests, is built in Angular and hosted in Firebase. My primary aim is to keep the code as clean and 'good' as possible,
+    whilst aiming to meet accessibility standards. All is still a work in progess.
+  </p>
+  <p>You can find the source code at <a href="https://github.com/joshdavis739/angularsquirrel">AngularSquirrel on GitHub</a>.</p>
+</div>
+<hr>
+<div>
+  <h2>Tech stack</h2>
+  <div class="tech-stack__container">
+    <div>
+      <h3>Frontend</h3>
+      <ul>
+        <li>Angular</li>
+        <li>CSS & SCSS</li>
+        <li>HTML</li>
+        <li>TypeScript</li>
+        <li>Knockout.js</li>
+        <li>RxJS</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Backend</h3>
+      <ul>
+        <li>C#</li>
+        <li>.NET & .NET Core</li>
+        <li>ASP.NET MVC & Web API</li>
+        <li>Entity Framework</li>
+        <li>LINQ</li>
+        <li>Azure WebJobs and Service Bus</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Other</h3>
+      <ul>
+        <li>Git</li>
+        <li>CI/CD with Azure DevOps</li>
+        <li>OWASP</li>
+        <li>Visual Studio & Visual Studio Code</li>
+        <li>Manual testing</li>
+      </ul>
+    </div>
   </div>
-  <div>
-    Backend & databases
-    <ul>
-      <li>C#</li>
-      <li>.NET & .NET Core</li>
-      <li>ASP.NET MVC</li>
-      <li>ASP.NET Web API</li>
-      <li>Entity Framework</li>
-      <li>LINQ</li>
-    </ul>
-  </div>
-</app-collapsible-section>
-
-<app-collapsible-section
-  [title]="'Contact me'">
-  <div>
-    <ul>
-      <li></li>
-    </ul>
-  </div>
-</app-collapsible-section>
-
-<a href="https://github.com/joshdavis739" class="contact-me__link">
-  <i class="contact-me__icon github"></i>
-  <span class="contact-me__text">Github</span>
-</a>
+</div>

@@ -14,3 +14,17 @@ body {
 h1 {
     font-size: $height-h1;
 }
+
+a {
+  color: $orange-primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+
+    > span {
+      text-decoration: underline;
+    }
+  }
+
+}

@@ -4,19 +4,15 @@ import { BlogArticleSummary } from '../models/blog-article-summary';
 export const blogArticles: BlogArticle[] = [
   {
     summary: {
-      identifier: 'test-identifier',
-      title: 'The Great Lie of Web Development',
-      subtitle: 'And how best to get the most clicks on your site',
-      datePosted: new Date(Date.now())
+      identifier: 'transitions',
+      title: 'My thoughts on transitions',
+      subtitle: 'Spinners and sliders and loaders and flashes...',
+      datePosted: new Date(Date.now()),
+      isDraft: true
     } as BlogArticleSummary,
     text:
     `
-    This is not an ordinary blog article. In fact, I would hesistate to even call it a blog article. This revolutionary bit of advice will change the way you
-    creat websites. But first, we have to take a short history lesson. As Warren Buffet once said,
-
-    > The more you learn, the more you learn.
-
-    That's why I'm here in my garage. Just bought this new Lamborghini here. But you know what I value more than that? Knowledge.
+    In my opinion, transitions are overused, and including them can often take away from the user experience of a site.
     `
   } as BlogArticle,
   {
@@ -24,7 +20,7 @@ export const blogArticles: BlogArticle[] = [
       identifier: 'solid-interface_segregation-appendix',
       title: 'The Interface Segregation Principle',
       subtitle: '... and a discussion about your appendix',
-      datePosted: new Date(Date.now())
+      datePosted: new Date('2021-01-15')
     } as BlogArticleSummary,
     text:
     `

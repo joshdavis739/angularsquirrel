@@ -4,4 +4,5 @@ export interface BlogArticleSummary {
   subtitle: string;
   datePosted: Date;
   text: string;
+  isDraft: boolean;
 }
