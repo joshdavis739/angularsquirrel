@@ -14,16 +14,6 @@ $card-height: 320px;
   color: $white;
   padding: 2rem;
 
-  .card__image {
-    height:calc((3 * #{$card-height}) / 5);
-    border-radius: $border-radius;
-    background: url(../../../assets/images/squirrel.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
   .card__date {
     font-size: 14px;
     color: $grey-primary;
