@@ -1,2 +1,3 @@
 # angularsquirrel
-Angular Squirrel
+
+See https://angularsquirrel.com/.
