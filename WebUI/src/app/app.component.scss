@@ -1,6 +1,14 @@
 @import '../styles.scss';
 
-.body {
+.content {
+  padding: $page-padding;
+  background-attachment: fixed;
+  margin: auto;
+  max-width: 80ch;
+}
+
+.content__container {
+  width: 100%;
   background-image: linear-gradient(
       rgba(0, 0, 0, 0.8),
       rgba(0, 0, 0, 0.8)
@@ -8,13 +16,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-}
-
-.content {
-  padding: $page-padding;
-  min-height: calc(100vh - #{$header-height} - 2 * #{$page-padding});
-  background-attachment: fixed;
-  width: 80ch;
-  margin: auto;
+  min-height: calc(100vh - #{$header-height});
   margin-top: 64px;
 }
