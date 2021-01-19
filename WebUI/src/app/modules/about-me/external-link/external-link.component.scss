@@ -1,0 +1,32 @@
+$icon-height: 32px;
+$icon-width: 32px;
+
+.external-link {
+  height: $icon-height;
+  display: inline-block;
+}
+
+.external-link__icon {
+  display: inline-block;
+  vertical-align: top;
+  height: $icon-height;
+  width: $icon-width;
+  background-size: 32px $icon-width;
+  background-repeat: no-repeat;
+}
+
+.external-link__text {
+  line-height: $icon-height;
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 8px;
+}
+
+.github {
+  background-image: url('~/assets/images/GitHub-Mark-Light-64px.png');
+}
+
+.linkedin {
+  background-image: url('~/assets/images/LI-In-Bug.png');
+}
+

@@ -1,35 +1,7 @@
-.github {
-  background-image: url('~/assets/images/GitHub-Mark-Light-64px.png');
-  background-size: 32px 32px;
-  background-repeat: no-repeat;
-  height: 32px;
-  width: 32px;
-  display: inline-block;
-}
-
-.contact-me__link {
-  height: 32px;
-  display: block;
-}
-
-.contact-me__text {
-  line-height:  32px;
-  display: inline-block;
-  vertical-align: top;
-  padding-left: 8px;
-}
-
-.contact-me__icon {
-  display: inline-block;
-  vertical-align: top;
-  height: 32px;
-  width: 32px;
-}
-
 .tech-stack__container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 32px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
   h3 {
     margin-top: 0;
@@ -38,4 +10,14 @@
   ul {
     padding-left: 16px;
   }
+}
+
+.tech-stack__item {
+  width: calc((100% / 3)  - 32px);
+  min-width: 16ch;
+  padding-left: 16px;
+}
+
+app-external-link + app-external-link {
+  margin-left: 32px;
 }
