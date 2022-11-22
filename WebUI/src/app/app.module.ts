@@ -10,6 +10,9 @@ import { BlogModule } from './modules/blog/blog.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { MarkdownModule, MarkdownService, MarkedOptions } from 'ngx-markdown';
+import { ResistanceRoleGeneratorModule } from './modules/resistance-role-generator/resistance-role-generator.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,8 +25,12 @@ import { MarkdownModule, MarkdownService, MarkedOptions } from 'ngx-markdown';
     AppRoutingModule,
     AboutMeModule,
     BlogModule,
+    ResistanceRoleGeneratorModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule,
+    HttpClientModule,
     // MarkdownModule.forRoot()
     MarkdownModule.forRoot({
       markedOptions: {

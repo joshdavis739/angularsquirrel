@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit()" #playerForm="ngForm">
+  <label>
+    Player name
+    <input name="name" type="text" [(ngModel)]="model.name"/>
+  </label>
+</form>
+
+<div>
+  <h2>
+    Players in game
+  </h2>
+  <ul>
+    <li *ngFor="let player of players">{{player.name}}</li>
+  </ul>
+</div>
