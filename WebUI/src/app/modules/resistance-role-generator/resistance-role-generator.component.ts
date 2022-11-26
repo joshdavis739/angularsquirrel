@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import * as signalR from '@microsoft/signalr';
-import { HubConnection, HubConnectionBuilder} from '@microsoft/signalr';
-import { connect } from 'net';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil, tap } from 'rxjs/operators';
 
 class PlayerModel {
   name: string;
+  sessionId: string;
+  startNewSession: boolean;
 }
 
 @Component({
@@ -18,25 +20,36 @@ export class ResistanceRoleGeneratorComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:5001/playerHub").build();
-    connection.on("AllPlayers", (message) => {
-      debugger;
-      console.log(message);
-    })
-    connection.start().then(() => {});
+    this.disableSessionId$.subscribe();
   }
 
-  model = new PlayerModel();
+  ngOnDestroy() {
+    this._destroy$.next();
+    this._destroy$.complete();
+  }
+
+  public playerForm = new FormGroup({
+    playerName: new FormControl('', Validators.required),
+    sessionId: new FormControl('', Validators.maxLength(4)),
+    startNewSession: new FormControl(false)
+  })
+
+  private readonly _destroy$ = new Subject();
+
+  public get disableSessionId$(): Observable<boolean> {
+    return this.playerForm.get("startNewSession")
+      .valueChanges
+      .pipe(
+        tap((x: boolean) => {
+          if(!!x) {
+            this.playerForm.controls['sessionId'].disable();
+           } else {
+              this.playerForm.controls['sessionId'].enable();
+            }
+        }),
+        takeUntil(this._destroy$)
+      );
+  }
 
   players = new Array<PlayerModel>();
-
-  onSubmit(): boolean {
-    debugger;
-    const playerModel = new PlayerModel();
-    playerModel.name = this.model.name;
-    this.http.post("https://localhost:5001/players", playerModel).subscribe(() => {
-
-    });
-    return false;
-  }
 }
