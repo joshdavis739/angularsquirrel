@@ -20,7 +20,8 @@ export const blogArticles: BlogArticle[] = [
       identifier: 'solid-interface_segregation-appendix',
       title: 'The Interface Segregation Principle',
       subtitle: '... and a discussion about your appendix',
-      datePosted: new Date('2021-01-15')
+      datePosted: new Date('2021-01-15'),
+      isDraft: true
     } as BlogArticleSummary,
     text:
     `

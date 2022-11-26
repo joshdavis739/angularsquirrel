@@ -1,8 +1,9 @@
 <div>
   <h1>About me</h1>
   <p>
-    I'm currently working as a full stack developer in Warwickshire with the .NET tech stack. Outside of work, I play French Horn, Tenor Horn and a bit too much FTL.
+    I'm a full-stack web developer in Warwickshire, primarily using the .NET tech stack, Knockout.js and Angular.
   </p>
+  <p>Outside of work, I play (two different types of) horn in a local orchestra and brass band. Occasionally, you may also find me running.</p>
   <p>You can follow my various exploits at:</p>
   <app-external-link
     [href]="'https://github.com/joshdavis739'"
@@ -15,49 +16,16 @@
     [text]="'LinkedIn'"
   ></app-external-link>
 </div>
-<hr>
 <div>
-  <h2>About AngularSquirrel</h2>
-  <p>AngularSquirrel, as the name suggests, is built in Angular and hosted in Firebase. My primary aim is to keep the code as clean and 'good' as possible,
-    whilst aiming to meet accessibility standards. All is still a work in progess.
+  <h1>
+    About Angular Squirrel
+  </h1>
+  <p>
+    Angular Squirrel is my dumping ground for projects. Current features include:
   </p>
-  <p>You can find the source code at <a href="https://github.com/joshdavis739/angularsquirrel">AngularSquirrel on GitHub</a>.</p>
-</div>
-<hr>
-<div>
-  <h2>Tech stack</h2>
-  <div class="tech-stack__container">
-    <div class="tech-stack__item">
-      <h3>Frontend</h3>
-      <ul>
-        <li>Angular2+</li>
-        <li>CSS & SCSS</li>
-        <li>HTML</li>
-        <li>TypeScript</li>
-        <li>Knockout.js</li>
-        <li>RxJS</li>
-      </ul>
-    </div>
-    <div class="tech-stack__item">
-      <h3>Backend</h3>
-      <ul>
-        <li>C#</li>
-        <li>.NET & .NET Core</li>
-        <li>ASP.NET MVC & Web API</li>
-        <li>Entity Framework</li>
-        <li>LINQ</li>
-        <li>Azure WebJobs and Service Bus</li>
-      </ul>
-    </div>
-    <div class="tech-stack__item">
-      <h3>Other</h3>
-      <ul>
-        <li>Git</li>
-        <li>CI/CD with Azure DevOps</li>
-        <li>OWASP</li>
-        <li>Visual Studio & Visual Studio Code</li>
-        <li>Manual testing</li>
-      </ul>
-    </div>
-  </div>
+  <ul>
+    <li>
+      <a [routerLink]="'/resistance-role-generator'">Resistance Role Generator</a>, for Don Eskridge's "The Resistance" (WIP)
+    </li>
+  </ul>
 </div>
