@@ -1,4 +1,8 @@
-<form [formGroup]="playerForm" class="form">
+<form
+  *ngIf="!(playerHasJoinedSession$ | async)"
+  [formGroup]="playerForm"
+  class="form"
+  (ngSubmit)="playerFormSubmit()">
   <div>
     <label for="playerName">
       Player name
@@ -33,14 +37,16 @@
     <input
       type="submit"
       value="Join"
-      class="btn">
+      class="btn"
+      [disabled]="disablePlayerFormSubmission$ | async">
   </div>
 </form>
 
-<div>
-  <h2>
-    Players in game
-  </h2>
+<div *ngIf="(playerHasJoinedSession$ | async)" class="form">
+  <div>
+    Session ID: {{ (sessionId$ | async) | uppercase }}
+  </div>
+  <span>Players in game</span>
   <ul>
     <li *ngFor="let player of players">{{player.name}}</li>
   </ul>

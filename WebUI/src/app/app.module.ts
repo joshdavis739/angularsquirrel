@@ -13,6 +13,7 @@ import { MarkdownModule, MarkdownService, MarkedOptions } from 'ngx-markdown';
 import { ResistanceRoleGeneratorModule } from './modules/resistance-role-generator/resistance-role-generator.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     AboutMeModule,
