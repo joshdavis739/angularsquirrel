@@ -2,129 +2,131 @@
 @import '../../../assets/styles/variables.scss';
 
 nav {
-    background-color: $black;
-    width: calc(100% - 2 * #{$page-padding});
-    height: $header-height;
-    padding-left: $page-padding;
-    padding-right: $page-padding;
-    transition: $transition-time;
-    position: fixed;
-    top: 0;
-    z-index: 1;
+  background-color: $black;
+  width: calc(100% - 2 * #{$page-padding});
+  height: $header-height;
+  padding-left: $page-padding;
+  padding-right: $page-padding;
+  transition: $transition-time;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 
-    &:hover {
-        opacity: 100%;
+  &:hover {
+    opacity: 100%;
+  }
+
+  div {
+    height: $header-height;
+    line-height: $header-height;
+
+    &.home {
+      float: left;
+
+      a {
+        >span {
+          background-image: url('../../../assets/images/angular-squirrel.svg');
+          background-size: 32px;
+          background-position: -4px -4px;
+          background-repeat: no-repeat;
+          padding-left: 32px;
+          filter: sepia(100%);
+          transition: $transition-time;
+        }
+
+        &.active {
+          >span {
+            filter: sepia(0%);
+          }
+        }
+
+      }
     }
 
-    div {
-        height: $header-height;
-        line-height: $header-height;
+    &.links {
+      float: right;
 
-        &.home {
-            float:left;
+      >ul {
+        list-style-type: none;
+        margin: 0;
+
+        >li {
+          display: inline;
+
+          &+li {
+            margin-left: 1rem;
+          }
+        }
+
+        &.isMobile {
+          position: fixed;
+          right: 32px;
+
+          &.open {
+            visibility: visible;
+          }
+
+          visibility: hidden;
+          margin-top: 5rem;
+          text-align: right;
+          background-color:black;
+          border-radius: $border-radius;
+          box-shadow: 0rem 0rem 1rem black;
+
+          >li {
+            display: list-item;
+            margin-right: 1rem;
 
             a {
-                > span {
-                    background-image: url('../../../assets/images/angular-squirrel.svg');
-                    background-size: 32px;
-                    background-position: -4px -4px;
-                    background-repeat: no-repeat;
-                    padding-left: 32px;
-                    filter: sepia(100%);
-                    transition: $transition-time;
-                }
-
-                &.active {
-                    > span {
-                        filter: sepia(0%);
-                    }
-                }
-
-            }
-        }
-
-        &.links {
-          float: right;
-
-          > ul {
-            list-style-type: none;
-            margin: 0;
-
-            > li {
-              display: inline;
-
-              & + li {
-                margin-left: 1rem;
-              }
+              transition: 0s;
             }
 
-            &.isMobile {
-              &.open {
-                visibility: visible;
-              }
-
-              visibility: hidden;
-              margin-top: 5rem;
-              text-align: right;
-              background-color:black;
-              border-radius: $border-radius;
-              box-shadow: 0rem 0rem 1rem black;
-
-              > li {
-                display: list-item;
-                margin-right: 1rem;
-
-                a {
-                  transition: 0s;
-                }
-
-                & + li {
-                  margin-left: 0;
-                }
-              }
-            }
-          }
-
-          .burger {
-            margin: 16px 0 16px 16px;
-            float: right;
-            height: 32px;
-            width: 32px;
-            border: 1px solid white;
-            border-radius: $border-radius;
-            background-color: $black;
-            cursor: pointer;
-
-            .burger__line {
-              border-radius: 1px;
-              width: 16px;
-              height: 0;
-              margin-top: 4px;
-              margin-bottom: 4px;
-              border: 1px solid white;
-              color:white;
-
-              &:first-child {
-                margin-top: 4px;
-              }
-              // border-top: 1px dashed red;
+            &+li {
+              margin-left: 0;
             }
           }
         }
+      }
 
-        a {
-            text-transform: uppercase;
-            color: $white;
-            text-decoration: none;
-            transition: $transition-time;
+      .burger {
+        margin: 16px 0 16px 16px;
+        float: right;
+        height: 32px;
+        width: 32px;
+        border: 1px solid white;
+        border-radius: $border-radius;
+        background-color: $black;
+        cursor: pointer;
 
-            & + a {
-                padding-left: 32px;
-            }
+        .burger__line {
+          border-radius: 1px;
+          width: 16px;
+          height: 0;
+          margin-top: 4px;
+          margin-bottom: 4px;
+          border: 1px solid white;
+          color: white;
 
-            &.active {
-                color: $orange-primary;
-            }
+          &:first-child {
+            margin-top: 4px;
+          }
         }
+      }
     }
+
+    a {
+      text-transform: uppercase;
+      color: $white;
+      text-decoration: none;
+      transition: $transition-time;
+
+      &+a {
+        padding-left: 32px;
+      }
+
+      &.active {
+        color: $orange-primary;
+      }
+    }
+  }
 }

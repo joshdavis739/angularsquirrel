@@ -1,0 +1,53 @@
+<form
+  *ngIf="!(playerHasJoinedSession$ | async)"
+  [formGroup]="playerForm"
+  class="form"
+  (ngSubmit)="playerFormSubmit()">
+  <div>
+    <label for="playerName">
+      Player name
+    </label>
+    <input
+      id="playerName"
+      name="playerName"
+      type="text"
+      formControlName="playerName"/>
+  </div>
+  <div>
+    <label for="sessionId">
+      Session ID
+    </label>
+    <input
+      id="sessionId"
+      name="sessionId"
+      type="text"
+      formControlName="sessionId"
+      maxlength="4"
+      class="spaced-out">
+  </div>
+  <div class="new-session">
+    <label for="startNewSession">
+      or start a new session
+    </label>
+    <input
+      id="startNewSession"
+      name="startNewSession"
+      type="checkbox"
+      formControlName="startNewSession">
+    <input
+      type="submit"
+      value="Join"
+      class="btn"
+      [disabled]="disablePlayerFormSubmission$ | async">
+  </div>
+</form>
+
+<div *ngIf="(playerHasJoinedSession$ | async)" class="form">
+  <div>
+    Session ID: {{ (sessionId$ | async) | uppercase }}
+  </div>
+  <span>Players in game</span>
+  <ul>
+    <li *ngFor="let player of players">{{player.name}}</li>
+  </ul>
+</div>
