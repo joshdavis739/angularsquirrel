@@ -1,126 +1,83 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { filter, map, takeUntil, tap } from 'rxjs/operators';
-
-class PlayerModel {
-  name: string;
-  id: string;
-}
-
-class GameMode {
-  name: string;
-  id: string;
-}
+import { AddNewPlayerToExistingSessionModel } from './models/add-new-player-to-existing-session';
+import { AddNewPlayerToNewSessionModel } from './models/add-new-player-to-new-session-model';
+import { GameMode } from './models/game-mode';
+import { PlayerModel } from './models/player-model';
+import { Session } from './models/session';
+import { ResistanceGameService } from './resistance-game.service';
 
 @Component({
   selector: 'app-resistance-role-generator',
   templateUrl: './resistance-role-generator.component.html',
   styleUrls: ['./resistance-role-generator.component.scss']
 })
-export class ResistanceRoleGeneratorComponent implements OnInit {
+export class ResistanceRoleGeneratorComponent implements OnInit, OnDestroy {
 
-  constructor(private http: HttpClient) {
-    const regularResistance = new GameMode();
-    regularResistance.name = "Regular";
-    this.allGameModes.push(regularResistance);
+  constructor(private resistanceGameService: ResistanceGameService) { }
 
-    const chaOSmOdE = new GameMode();
-    chaOSmOdE.name = "ChaOS mOdE";
-    this.allGameModes.push(chaOSmOdE);
-
-    const allAny = new GameMode();
-    allAny.name = "All any";
-    this.allGameModes.push(allAny);
-
-    this.validPlayerCounts.push(5);
-    this.validPlayerCounts.push(6);
-    this.validPlayerCounts.push(7);
-    this.validPlayerCounts.push(8);
-    this.validPlayerCounts.push(9);
-    this.validPlayerCounts.push(10);
-  }
-
-  ngOnInit() {
-    this.disableSessionId$.subscribe();
-    this.onPlayerFormSubmit$.subscribe();
-  }
+  ngOnInit() { }
 
   ngOnDestroy() {
     this._destroy$.next();
     this._destroy$.complete();
   }
 
-  public readonly validPlayerCounts = new Array<number>();
+  public playerHasJoinedSession$ = new BehaviorSubject(false);
+  public joinedSession$ = new BehaviorSubject<Session>({id: '', gameMode: {id: '', name: ''}, numberOfPlayers: 0, players: [] } as Session);
 
-  public readonly allGameModes = new Array<GameMode>();
+  public readonly allGameModes = this.resistanceGameService.allGameModes;
 
-  public playerForm = new FormGroup({
+  public get validPlayerCounts() {
+    return this.resistanceGameService.validPlayerCounts;
+  }
+
+  public newPlayerForm = new FormGroup({
     playerName: new FormControl('', Validators.required),
     sessionId: new FormControl('', Validators.maxLength(4)),
     startNewSession: new FormControl(false),
     numberOfPlayers: new FormControl(5),
-    gameMode: new FormControl(this.allGameModes)
-  })
+    gameMode: new FormControl(this.allGameModes[0])
+  });
 
   private readonly _destroy$ = new Subject();
-  private readonly _playerFormSubmit$ = new Subject();
-
-  public playerHasJoinedSession$ = new BehaviorSubject(false);
-  public sessionId$ = new BehaviorSubject('');
-  public gameMode$ = new BehaviorSubject(null);
-  public numberOfPlayers$ = new BehaviorSubject(null);
 
   public get disablePlayerFormSubmission$(): Observable<boolean> {
-    return this.playerForm.valueChanges
+    return this.newPlayerForm.valueChanges
       .pipe(
-        map(_ => !!this.playerForm.valid),
-        takeUntil(this._destroy$)
-      );
-  }
-
-  public get disableSessionId$(): Observable<boolean> {
-    return this.playerForm.get("startNewSession")
-      .valueChanges
-      .pipe(
-        tap((x: boolean) => {
-          if(!!x) {
-            this.playerForm.controls['sessionId'].disable();
-           } else {
-              this.playerForm.controls['sessionId'].enable();
-            }
-        }),
+        map(_ => !!this.newPlayerForm.valid),
         takeUntil(this._destroy$)
       );
   }
 
   public playerFormSubmit(): void {
-    this._playerFormSubmit$.next();
+    if (!!this.newPlayerForm.get('startNewSession').value) {
+      const player = {
+        name: this.newPlayerForm.get('playerName').value,
+        numberOfPlayers: this.newPlayerForm.get('numberOfPlayers').value,
+        gameModeId: this.newPlayerForm.get('gameMode').value.id
+      } as AddNewPlayerToNewSessionModel;
+
+      this.resistanceGameService.addNewPlayerToNewSession(player)
+        .subscribe(x => {
+          this.playerHasJoinedSession$.next(true);
+          this.joinedSession$.next(x);
+        });
+    }
+    else {
+      const player = {
+        name: this.newPlayerForm.get('playerName').value,
+        sessionId: this.newPlayerForm.get('sessionId').value
+      } as AddNewPlayerToExistingSessionModel;
+
+      this.resistanceGameService.addNewPlayerToExistingSession(player)
+        .subscribe(x => {
+          this.playerHasJoinedSession$.next(true);
+          this.joinedSession$.next(x);
+        });
+    }
   }
-
-  private onPlayerFormSubmit$ = this._playerFormSubmit$
-    .pipe(
-      map(_ => {
-        return !!this.playerForm.valid;
-      }),
-      filter(x => !!x),
-      tap(_ => {
-        const playerModel = new PlayerModel();
-
-        // TODO: wire up with actual submission logic
-        const sessionId = !!this.playerForm.get('startNewSession').value
-          ? 'TEST' : this.playerForm.get('sessionId').value as string;
-        this.sessionId$.next(sessionId);
-        this.numberOfPlayers$.next(this.playerForm.get('numberOfPlayers').value);
-        this.gameMode$.next(this.playerForm.get('gameMode').value);
-
-        playerModel.name = this.playerForm.get('playerName').value;
-        this.players.push(playerModel);
-        this.playerHasJoinedSession$.next(true);
-      }),
-      takeUntil(this._destroy$)
-    );
-
-  players = new Array<PlayerModel>();
 }

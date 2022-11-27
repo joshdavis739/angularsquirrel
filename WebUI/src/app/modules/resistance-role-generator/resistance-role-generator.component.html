@@ -1,6 +1,6 @@
 <form
   *ngIf="!(playerHasJoinedSession$ | async)"
-  [formGroup]="playerForm"
+  [formGroup]="newPlayerForm"
   class="form"
   (ngSubmit)="playerFormSubmit()">
   <div>
@@ -14,7 +14,7 @@
       formControlName="playerName"/>
   </div>
   <div
-    *ngIf="!playerForm.get('startNewSession').value">
+    *ngIf="!newPlayerForm.get('startNewSession').value">
     <label for="sessionId">
       Session ID
     </label>
@@ -27,7 +27,7 @@
       class="spaced-out">
   </div>
   <div
-    *ngIf="!!playerForm.get('startNewSession').value">
+    *ngIf="!!newPlayerForm.get('startNewSession').value">
     <div style="width: calc(50% - 16px); display: inline-block; margin-right: 16px; vertical-align: top;">
       <label
         for="numberOfPlayers">
@@ -49,7 +49,7 @@
         id="gameMode"
         name="gameMode"
         formControlName="gameMode">
-        <option *ngFor="let gameMode of allGameModes">{{gameMode.name}}</option>
+        <option *ngFor="let gameMode of allGameModes" [ngValue]="gameMode">{{gameMode.name}}</option>
       </select>
     </div>
   </div>
@@ -70,15 +70,15 @@
   </div>
 </form>
 
-<div *ngIf="(playerHasJoinedSession$ | async)" class="form">
+<div *ngIf="playerHasJoinedSession$ | async" class="form">
   <div>
-    {{ numberOfPlayers$ | async }} player {{ gameMode$ | async }}
+    {{ (joinedSession$ | async).numberOfPlayers }} player {{ (joinedSession$ | async).gameMode.name }}
   </div>
   <div>
-    Session ID: {{ (sessionId$ | async) | uppercase }}
+    Session ID: {{ ((joinedSession$ | async).id) | uppercase }}
   </div>
   <span>Players in game</span>
   <ul>
-    <li *ngFor="let player of players">{{player.name}}</li>
+    <li *ngFor="let player of (joinedSession$ | async).players">{{player.name}}</li>
   </ul>
 </div>
