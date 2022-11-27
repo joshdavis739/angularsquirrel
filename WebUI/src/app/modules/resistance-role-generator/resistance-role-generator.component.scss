@@ -2,8 +2,6 @@
 @import 'src/assets/styles/variables';
 @import 'src/assets/styles/base.scss';
 
-$card-height: 320px;
-
 .form {
   background-color: black;
   // height: $card-height;
@@ -49,20 +47,32 @@ $card-height: 320px;
     }
   }
 
-  div // Label and inputs
+  select {
+    height: 38px;
+    margin-top: 8px;
+    border-radius: 2px;
+    border-width: 1px;
+    background-color: white;
+  }
 
   label {
-    &+input[type=text] {
-      margin-top: 8px;
+
+    &+input[type=text],
+    &+select {
       display: block;
-      // height: 64px;
-      line-height: 32px;
+      height: 38px;
+      // line-height: 32px;
       box-sizing: border-box;
       width: 100%;
 
       &.spaced-out {
         text-transform: uppercase;
       }
+    }
+
+    &+input[type=text] {
+
+      margin-top: 8px;
     }
 
     &+input[type=checkbox] {

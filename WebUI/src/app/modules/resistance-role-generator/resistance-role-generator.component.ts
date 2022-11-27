@@ -9,6 +9,11 @@ class PlayerModel {
   id: string;
 }
 
+class GameMode {
+  name: string;
+  id: string;
+}
+
 @Component({
   selector: 'app-resistance-role-generator',
   templateUrl: './resistance-role-generator.component.html',
@@ -16,7 +21,26 @@ class PlayerModel {
 })
 export class ResistanceRoleGeneratorComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const regularResistance = new GameMode();
+    regularResistance.name = "Regular";
+    this.allGameModes.push(regularResistance);
+
+    const chaOSmOdE = new GameMode();
+    chaOSmOdE.name = "ChaOS mOdE";
+    this.allGameModes.push(chaOSmOdE);
+
+    const allAny = new GameMode();
+    allAny.name = "All any";
+    this.allGameModes.push(allAny);
+
+    this.validPlayerCounts.push(5);
+    this.validPlayerCounts.push(6);
+    this.validPlayerCounts.push(7);
+    this.validPlayerCounts.push(8);
+    this.validPlayerCounts.push(9);
+    this.validPlayerCounts.push(10);
+  }
 
   ngOnInit() {
     this.disableSessionId$.subscribe();
@@ -28,10 +52,16 @@ export class ResistanceRoleGeneratorComponent implements OnInit {
     this._destroy$.complete();
   }
 
+  public readonly validPlayerCounts = new Array<number>();
+
+  public readonly allGameModes = new Array<GameMode>();
+
   public playerForm = new FormGroup({
     playerName: new FormControl('', Validators.required),
     sessionId: new FormControl('', Validators.maxLength(4)),
-    startNewSession: new FormControl(false)
+    startNewSession: new FormControl(false),
+    numberOfPlayers: new FormControl(5),
+    gameMode: new FormControl(this.allGameModes)
   })
 
   private readonly _destroy$ = new Subject();
@@ -39,6 +69,8 @@ export class ResistanceRoleGeneratorComponent implements OnInit {
 
   public playerHasJoinedSession$ = new BehaviorSubject(false);
   public sessionId$ = new BehaviorSubject('');
+  public gameMode$ = new BehaviorSubject(null);
+  public numberOfPlayers$ = new BehaviorSubject(null);
 
   public get disablePlayerFormSubmission$(): Observable<boolean> {
     return this.playerForm.valueChanges
@@ -80,6 +112,8 @@ export class ResistanceRoleGeneratorComponent implements OnInit {
         const sessionId = !!this.playerForm.get('startNewSession').value
           ? 'TEST' : this.playerForm.get('sessionId').value as string;
         this.sessionId$.next(sessionId);
+        this.numberOfPlayers$.next(this.playerForm.get('numberOfPlayers').value);
+        this.gameMode$.next(this.playerForm.get('gameMode').value);
 
         playerModel.name = this.playerForm.get('playerName').value;
         this.players.push(playerModel);
