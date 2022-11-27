@@ -36,7 +36,7 @@ export class ResistanceRoleGeneratorComponent implements OnInit, OnDestroy {
   }
 
   public newPlayerForm = new FormGroup({
-    playerName: new FormControl('', Validators.required),
+    playerName: new FormControl('', [Validators.required, Validators.minLength(1)]),
     sessionId: new FormControl('', Validators.maxLength(4)),
     startNewSession: new FormControl(false),
     numberOfPlayers: new FormControl(5),
@@ -54,6 +54,11 @@ export class ResistanceRoleGeneratorComponent implements OnInit, OnDestroy {
   }
 
   public playerFormSubmit(): void {
+    if (!this.newPlayerForm.valid) {
+      alert("Form invalid.");
+      return;
+    }
+
     if (!!this.newPlayerForm.get('startNewSession').value) {
       const player = {
         name: this.newPlayerForm.get('playerName').value,
